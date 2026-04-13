@@ -135,7 +135,7 @@ Here is an example of changing the light color scheme.
 ```css file="src/styles/global.css"
 /* ... */
 :root,
-html[data-theme="light"] {
+html[data-theme="light"] {6666666666
   --background: #f6eee1;
   --foreground: #012c56;
   --accent: #e14a39;
