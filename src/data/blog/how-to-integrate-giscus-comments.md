@@ -1,0 +1,318 @@
+---
+author: FjellOverflow
+pubDatetime: 2024-07-25T11:11:53Z
+modDatetime: 2025-03-12T12:28:53Z
+title: 滴水三期-公开课2
+slug: 滴水三期-公开课2
+featured: false
+draft: false
+tags:
+  - 逆向笔记
+description: 本文介绍了逻辑运算的基本概念和应用，包括或、与、异或、非、左移等运算，并详细解释了计算机如何通过逻辑运算实现加法运算。文章还探讨了寄存器与内存的工作原理，包括寄存器的类型、内存的寻址方式和堆栈的基本概念。最后，文章通过加密和解密的例子展示了逻辑运算在客户端和服务器通信中的应用，并介绍了STOS指令在批量填充内存中的作用。 
+---
+
+Hosting a thin static blog on a platform like [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) has numerous advantages, but also takes away some interactivity. Fortunately, [Giscus](https://giscus.app/) exists and offers a way to embed user comments on static sites.
+
+## Table of contents
+
+# 逻辑运算
+
+## 或(or  |)
+
+只要有一个为1就是1
+
+```
+1011000101
+1001100110
+__________
+1011100111
+```
+
+<img width="320" height="167" alt="或" src="https://github.com/user-attachments/assets/e7077930-9f3d-4f8f-a8cf-83d55796d57d" />
+
+## 与(and  &)
+
+两个都为1才是1
+```
+1011000101
+1001100110
+__________
+1001000100
+```
+<img width="297" height="123" alt="与" src="https://github.com/user-attachments/assets/ec22679f-faed-4588-9b57-68422da77bd0" />
+
+## 异或（xor ^）
+```
+1011000101
+1001100110
+__________
+0010100011
+```
+<img width="251" height="119" alt="image" src="https://github.com/user-attachments/assets/290f9dd9-85eb-4f16-b2ff-c0df86d1448d" />
+
+上1下0 只有这样，电路才可以连通
+
+## 非（not！）
+
+1是0 0是1
+
+```
+1001100110
+__________
+0110011001
+```
+
+## 左移（<<）
+
+0010<<0100
+
+## 计算机如何计算2 + 3
+
+X：0010
+Y：0011
+xor X Y =  R = 0001
+
+## 如何判断3+2计算完毕
+
+and X Y = Z = 0010
+Z<<0100  根据这个结果是否为0判断计算是否结束
+Y：0100
+X：0001
+xor X Y = R = 0101
+X：0001
+Y：0100
+and = 0000
+0000<<1 = 0000   R = 0101
+
+## 逻辑运算在客户端和服务器加密的应用
+### 客户端：2015
+秘钥：54
+客户端将数据发送给服务端（加密）
+`20`  `15`    两个字节
+```XOR
+      00100000      
+xor   01010100
+_____________
+      01110100 ->74
+```
+```xor
+      00010101
+xor   01010100
+_____________
+      01000001 ->41
+```
+The answer is `7441`
+### 服务器：7441（服务器解密过程）
+秘钥：54
+```xor
+      01110100
+xor   01010100
+______________
+      00100000->20
+```
+```
+      01000001
+xor   01010100
+______________
+      00010101->15
+```
+解密数据 = 2015
+
+# 寄存器与内存
+
+寄存器是最快的（效率高 成本高） 内存比寄存器慢（效率低 成本低）<p>
+32位通用寄存器 不用记具体用途 对我们来说他只是一个容器<p>
+几个常用的计量单位<p>
+byte（字节） = 8Bit<p>
+Word（字） = 16Bit<p>
+Dword（双字） = 32Bit<p>
+通用寄存器的使用（EAX/ECX/EDX/EBX）<p>
+MOV/ADD/SUB<p>
+mov eax，12345678<p>
+add eax,1<p>
+mov ecx,2<p>
+add eax,ecx<p>
+sub eax,3<p>
+要加上0x表示十六进制数<p>
+
+# 内存
+
+<img width="269" height="129" alt="image" src="https://github.com/user-attachments/assets/e044a7de-e971-4731-b4d5-50cc5bf7a99c" />
+
+每个内存单元的宽度为8个字节<p>
+内存单元的编号称之为地址<p>
+为什么物理机被称为32位计算机<p>
+因为寻址宽度为32位 即8个十六进制数<p>
+从0X00000000~0xFFFFFFFF<p>
+1k = 1024字节<p>
+1m = 1024k<p>
+32位的寻址宽度可以存储FFFFFFFF+1的数据<p>
+
+<img width="423" height="388" alt="image" src="https://github.com/user-attachments/assets/027672c8-bbdd-4a83-bbf1-3e658109d997" />
+
+系统已经有一部分的占用，所以内存一般没有理想的那么大
+
+## 内存的读写
+
+** 读取内存的值 **
+
+### 寻址公式一
+
+MOV EAX,DWORD PTR DS:[0x13FFC4]//从后边地址取值，取32位大小的数据<p>
+MOV EAX,DWORD PTR DS:[0x13FFC8]<p>
+
+<img width="1231" height="103" alt="image" src="https://github.com/user-attachments/assets/0da2c660-2db1-4450-afa1-3f546fc52ff2" />
+
+** 向内存中写入数据: **
+MOV DWORD PTR DS:[0x13FFC4].eax<p>
+MOV DWORD PTR DS:[0x13FFC8],ebx<p>
+<img width="1340" height="63" alt="image" src="https://github.com/user-attachments/assets/3b9fbbf9-d182-46e5-a4d9-291213746098" />
+
+** 获取内存编号: **
+LEA EAX,DWORD PTR DS:[0X13FFC4]<p>
+LEA EAX,DWORD PTR DS:[ESP+8]<p>
+<img width="751" height="43" alt="image" src="https://github.com/user-attachments/assets/4ae37456-f95e-4288-9653-44737d1359d8" />
+
+DS->数据段  SS->栈段  ES->附加段
+
+<img width="1015" height="692" alt="image" src="https://github.com/user-attachments/assets/cf0660f2-32f7-4f21-b1f7-a7e20355055a" />
+
+lea 取地址编号
+### 寻址公式二:[reg] reg代表寄存器可以是8个通用寄存器中的任意一个
+读取内存的值:<p>
+MOV ECX.0x13FFD0<p>
+MOV EAX,DWORD PTR DS:[ECX]<p>
+
+<img width="652" height="36" alt="image" src="https://github.com/user-attachments/assets/058cf683-f5fc-4b90-84b4-253302c1bd4a" />
+
+<img width="164" height="222" alt="image" src="https://github.com/user-attachments/assets/3733ffb8-6867-4d98-a783-69014b76c304" />
+
+向内存中写入数据:<p>
+
+MOV EDX.0x13FFD8<p>
+MOV DWORD PTR DS:[EDX],0x87654321<p>
+
+<img width="903" height="39" alt="image" src="https://github.com/user-attachments/assets/2db55f49-a6b4-4267-8c6d-59545f42f362" />
+
+<img width="186" height="113" alt="image" src="https://github.com/user-attachments/assets/1bd89b8b-8ce6-409d-8bfa-8e1d622ee763" />
+
+获取内存编号:<p>
+LEA EAX,DWORD PTR DS:[EDX]<p>
+MOV EAX,DWORD PTR DS:[EDX]<p>
+
+<img width="804" height="49" alt="image" src="https://github.com/user-attachments/assets/540b4647-3ce1-4612-a3d7-5eb217fa1ba7" />
+
+### 寻址公式三:[reg+立即数]
+读取内存的值:<p>
+MOV ECX,0x13FFD0<p>
+MOV EAX,DWORD PTR DS:[ECX+4]<p>
+
+<img width="801" height="39" alt="image" src="https://github.com/user-attachments/assets/b69503af-a4a3-463e-8769-4a754df0e1df" />
+
+<img width="215" height="190" alt="image" src="https://github.com/user-attachments/assets/fff78691-0476-4b39-a8ef-29c415e9b4a7" />
+
+向内存中写入数据:<p>
+MOV EDX.0x13FFD8<p>
+MOV DWORD PTR DS:[EDX+0xC],0x87654321<p>
+<img width="1018" height="48" alt="image" src="https://github.com/user-attachments/assets/5a9b4883-9b60-480b-b2d0-5db8c7cb5f8b" />
+
+<img width="211" height="111" alt="image" src="https://github.com/user-attachments/assets/fef732a6-7598-4a5d-b9e3-6e14b90598a2" />
+
+获取内存编号:<p>
+LEA EAX.DWORD PTR DS:[EDX+4]<p>
+MOV EAX,DWORD PTR DS:[EDX+4]<p>
+<img width="692" height="48" alt="image" src="https://github.com/user-attachments/assets/6a93f0a9-e42f-45a2-8603-8c6720ed9b93" />
+
+### 寻址公式四:reg+reg*{1,2.4,8}
+读取内存的值:<p>
+MOV EAX.13FFC4<p>
+MOVECX.2<p>
+MOV EDX,DWORD PTR DS:[EAX+ECX*4]//只能是1248<p>
+<img width="868" height="57" alt="image" src="https://github.com/user-attachments/assets/066bd173-d0b2-47e1-b511-f2044b5886bd" />
+
+<img width="197" height="700" alt="image" src="https://github.com/user-attachments/assets/52dcf900-311d-4019-895a-9416fbe6993f" />
+
+向内存中写入数据:<p>
+MOV EAX,13FFC4<p>
+MOV ECX.2<p>
+MOV DWORD PTR DS:[EAX+ECX*4],87654321<p>
+<img width="651" height="51" alt="image" src="https://github.com/user-attachments/assets/35e674fa-26a1-43da-8feb-020eba24612f" />
+
+<img width="238" height="89" alt="image" src="https://github.com/user-attachments/assets/ab445ae7-f577-4bda-b222-31e1107295f0" />
+
+获取内存编号:<p>
+LEA EAX,DWORD PTR DS:[EAX+ECX*4]<p>
+<img width="627" height="17" alt="image" src="https://github.com/user-attachments/assets/c7f69baa-1f81-484d-b2fc-4125244395e9" />
+
+<img width="185" height="221" alt="image" src="https://github.com/user-attachments/assets/d61b600b-8a1f-45d6-8ebf-bb3814bfcb89" />
+
+### 寻址公式五:[reg+reg*{1,2,4,8}+立即数]
+读取内存的值:<p>
+MOV EAX,13FFC4<p>
+MOV ECX.2<p>
+MOV EDX,DWORD PTR DS:[EAX+ECX*4+4]<p>
+<img width="627" height="50" alt="image" src="https://github.com/user-attachments/assets/c142f04a-d927-486e-b462-6331fcf08fa3" />
+
+<img width="289" height="191" alt="image" src="https://github.com/user-attachments/assets/ddbb92c4-4cf6-4ba4-8b53-daae6c484dba" />
+
+向内存中写入数据:<p>
+MOV EAX.13FFC4<p>
+MOV ECX.2<p>
+MOV DWORD PTR DS:[EAX+ECX*4+4],87654321<p>
+<img width="625" height="48" alt="image" src="https://github.com/user-attachments/assets/aacd8c82-3925-4043-9b51-8d226dd6ed1d" />
+
+<img width="219" height="123" alt="image" src="https://github.com/user-attachments/assets/b7cf4aa5-688f-49f7-9aaf-a2d0d6cbe299" />
+
+获取内存编号:<p>
+LEA EAX,DWORD PTR DS:[EAX+ECX*4+2]<p>
+<img width="559" height="21" alt="image" src="https://github.com/user-attachments/assets/b5255f56-22c6-45d6-bf5c-4876ce086244" />
+
+<img width="204" height="132" alt="image" src="https://github.com/user-attachments/assets/0ee20ad9-28d2-41eb-9b86-61e935106379" />
+
+<img width="1920" height="1048" alt="image" src="https://github.com/user-attachments/assets/e2943627-e8f3-4931-b007-5f1acf274a89" />
+
+# 堆栈
+1、堆栈的本质就是内存。<p>
+2、栈是用来存储临时变量，函数传递的中间结果。<p>
+3、操作系统维护的，对于“程序员"是透明的。<p>
+注:课程里面会用一周的时间来熟悉堆栈。<p>
+
+<img width="567" height="225" alt="image" src="https://github.com/user-attachments/assets/a905edd1-df7c-404f-9842-792caf470e36" />
+
+push esp减小  pop esp增加<p>
+作业：<p>
+push eax<p>
+等于<p>
+mov dword ptr ss:[esp-4],eax<p>
+sub esp,4<p>
+
+<img width="529" height="155" alt="image" src="https://github.com/user-attachments/assets/3470fba0-27c4-468d-bca7-dcb0b4cee45d" />
+
+push esp<p>
+等于<p>
+mov dword ptr ss:[esp-4],esp<p>
+lea esp,dword ptr ss:[esp-4]  <p>
+或者<p>
+mov dword ptr ss:[esp-4],esp<p>
+sub esp<p>
+pop esp<p>
+等于<p>
+lea esp,dword ptr ss:[esp+4]<p>
+mov esp,dword ptr ss:[esp-4]<p>
+与 push 对应的 pop 操作则相反：先降低栈顶指针，再取出数据。<p>
+或者<p>
+add esp,4<p>
+mov esp,dword ptr ss:[esp-4]<p>
+<img width="252" height="64" alt="image" src="https://github.com/user-attachments/assets/957e7557-4fa2-4f90-9a25-7e3e9bd64661" />
+
+STOS（Store String）直译是 “存储字符串”，它的核心作用是：将累加器（AL/AX/EAX/RAX）中的值，存储到 ES:DI（或 ES:EDI/RDI）指向的内存地址中，并根据方向标志位（DF）自动调整 DI/EDI/RDI 寄存器的值，方便连续存储。<p>
+简单说，STOS 就是 “把寄存器里的数写到内存里”，专门用于批量填充内存（比如 memset 功能），是串操作指令中最常用的之一。
+<img width="866" height="386" alt="image" src="https://github.com/user-attachments/assets/f57b2d90-4122-45fa-b08a-bf76d5b34eb9" />
+
+分别为Stosb  stosw stosd stosq <p>
+DF=0（默认，可通过 CLD 指令设置）：DI/EDI/RDI 自动递增（向高地址存储）；<p>
+DF=1（可通过 STD 指令设置）：DI/EDI/RDI 自动递减（向低地址存储）。<p>
+REP STOS 是 x86 汇编中高效批量填充内存的核心指令：<p>
+核心逻辑：ECX 控制次数，DI 指向目标内存，累加器提供填充值，重复执行存储操作；<p>
+典型用途：内存清零、批量赋值（如填充 NOP、初始化数据缓冲区）；<p>
+关键前提：DI 必须指向当前进程的有效内存地址（否则会触发无效内存访问，和你之前 dd eax 的问题本质相同）。<p>
