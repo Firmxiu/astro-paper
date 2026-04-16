@@ -139,7 +139,7 @@ Updated:
 <li><a href="#%E5%AF%BB%E5%9D%80%E5%85%AC%E5%BC%8F%E4%B8%80">寻址公式一</a></li>
 <li><a href="#%E5%AF%BB%E5%9D%80%E5%85%AC%E5%BC%8F%E4%BA%8Creg-reg%E4%BB%A3%E8%A1%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%8F%AF%E4%BB%A5%E6%98%AF8%E4%B8%AA%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%AD%E7%9A%84%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA">寻址公式二:[reg] reg代表寄存器可以是8个通用寄存器中的任意一个</a></li>
 <li><a href="#%E5%AF%BB%E5%9D%80%E5%85%AC%E5%BC%8F%E4%B8%89reg%E7%AB%8B%E5%8D%B3%E6%95%B0">寻址公式三:[reg+立即数]</a></li>
-<li><a href="#%E5%AF%BB%E5%9D%80%E5%85%AC%E5%BC%8F%E5%9B%9Bregreg1248">寻址公式四:[reg+reg*{1,2.4,8}]</a></li>
+<li><a href="#%E5%AF%BB%E5%9D%80%E5%85%AC%E5%BC%8F%E5%9B%9Bregreg1248p">寻址公式四:[reg+reg*{1,2.4,8}]</a><p><a href="#%E5%AF%BB%E5%9D%80%E5%85%AC%E5%BC%8F%E5%9B%9Bregreg1248p"></a></p></li>
 <li><a href="#%E5%AF%BB%E5%9D%80%E5%85%AC%E5%BC%8F%E4%BA%94regreg1248%E7%AB%8B%E5%8D%B3%E6%95%B0">寻址公式五:[reg+reg*{1,2,4,8}+立即数]</a></li>
 </ul>
 </li>
@@ -217,144 +217,144 @@ and = 0000
 <span class="line"><span>      00010101->15</span></span></code></pre>
 <p>解密数据 = 2015</p>
 <h1 id="寄存器与内存">寄存器与内存</h1>
-<p>寄存器是最快的（效率高 成本高） 内存比寄存器慢（效率低 成本低）
-32位通用寄存器 不用记具体用途 对我们来说他只是一个容器
-几个常用的计量单位
-byte（字节） = 8Bit
-Word（字） = 16Bit
-Dword（双字） = 32Bit
-通用寄存器的使用（EAX/ECX/EDX/EBX）
-MOV/ADD/SUB
-mov eax，12345678
-add eax,1
-mov ecx,2
-add eax,ecx
-sub eax,3
-要加上0x表示十六进制数</p>
+<p>寄存器是最快的（效率高 成本高） 内存比寄存器慢（效率低 成本低）</p><p>
+32位通用寄存器 不用记具体用途 对我们来说他只是一个容器</p><p>
+几个常用的计量单位</p><p>
+byte（字节） = 8Bit</p><p>
+Word（字） = 16Bit</p><p>
+Dword（双字） = 32Bit</p><p>
+通用寄存器的使用（EAX/ECX/EDX/EBX）</p><p>
+MOV/ADD/SUB</p><p>
+mov eax，12345678</p><p>
+add eax,1</p><p>
+mov ecx,2</p><p>
+add eax,ecx</p><p>
+sub eax,3</p><p>
+要加上0x表示十六进制数</p><p></p>
 <h1 id="内存">内存</h1>
 <img width="269" height="129" alt="image" src="https://github.com/user-attachments/assets/e044a7de-e971-4731-b4d5-50cc5bf7a99c">
-<p>每个内存单元的宽度为8个字节
-内存单元的编号称之为地址
-为什么物理机被称为32位计算机
-因为寻址宽度为32位 即8个十六进制数
-从0X00000000~0xFFFFFFFF
-1k = 1024字节
-1m = 1024k
-32位的寻址宽度可以存储FFFFFFFF+1的数据</p>
+<p>每个内存单元的宽度为8个字节</p><p>
+内存单元的编号称之为地址</p><p>
+为什么物理机被称为32位计算机</p><p>
+因为寻址宽度为32位 即8个十六进制数</p><p>
+从0X00000000~0xFFFFFFFF</p><p>
+1k = 1024字节</p><p>
+1m = 1024k</p><p>
+32位的寻址宽度可以存储FFFFFFFF+1的数据</p><p></p>
 <img width="423" height="388" alt="image" src="https://github.com/user-attachments/assets/027672c8-bbdd-4a83-bbf1-3e658109d997">
 <p>系统已经有一部分的占用，所以内存一般没有理想的那么大</p>
 <h2 id="内存的读写">内存的读写</h2>
 <p>** 读取内存的值 **</p>
 <h3 id="寻址公式一">寻址公式一</h3>
-<p>MOV EAX,DWORD PTR DS:[0x13FFC4]//从后边地址取值，取32位大小的数据
-MOV EAX,DWORD PTR DS:[0x13FFC8]</p>
+<p>MOV EAX,DWORD PTR DS:[0x13FFC4]//从后边地址取值，取32位大小的数据</p><p>
+MOV EAX,DWORD PTR DS:[0x13FFC8]</p><p></p>
 <img width="1231" height="103" alt="image" src="https://github.com/user-attachments/assets/0da2c660-2db1-4450-afa1-3f546fc52ff2">
 <p>** 向内存中写入数据: **
-MOV DWORD PTR DS:[0x13FFC4].eax
-MOV DWORD PTR DS:[0x13FFC8],ebx
+MOV DWORD PTR DS:[0x13FFC4].eax</p><p>
+MOV DWORD PTR DS:[0x13FFC8],ebx</p><p>
 <img width="1340" height="63" alt="image" src="https://github.com/user-attachments/assets/3b9fbbf9-d182-46e5-a4d9-291213746098"></p>
 <p>** 获取内存编号: **
-LEA EAX,DWORD PTR DS:[0X13FFC4]
-LEA EAX,DWORD PTR DS:[ESP+8]
+LEA EAX,DWORD PTR DS:[0X13FFC4]</p><p>
+LEA EAX,DWORD PTR DS:[ESP+8]</p><p>
 <img width="751" height="43" alt="image" src="https://github.com/user-attachments/assets/4ae37456-f95e-4288-9653-44737d1359d8"></p>
 <p>DS->数据段  SS->栈段  ES->附加段</p>
 <img width="1015" height="692" alt="image" src="https://github.com/user-attachments/assets/cf0660f2-32f7-4f21-b1f7-a7e20355055a">
 <p>lea 取地址编号</p>
 <h3 id="寻址公式二reg-reg代表寄存器可以是8个通用寄存器中的任意一个">寻址公式二:[reg] reg代表寄存器可以是8个通用寄存器中的任意一个</h3>
-<p>读取内存的值:
-MOV ECX.0x13FFD0
-MOV EAX,DWORD PTR DS:[ECX]</p>
+<p>读取内存的值:</p><p>
+MOV ECX.0x13FFD0</p><p>
+MOV EAX,DWORD PTR DS:[ECX]</p><p></p>
 <img width="652" height="36" alt="image" src="https://github.com/user-attachments/assets/058cf683-f5fc-4b90-84b4-253302c1bd4a">
 <img width="164" height="222" alt="image" src="https://github.com/user-attachments/assets/3733ffb8-6867-4d98-a783-69014b76c304">
-<p>向内存中写入数据:</p>
-<p>MOV EDX.0x13FFD8
-MOV DWORD PTR DS:[EDX],0x87654321</p>
+<p>向内存中写入数据:</p><p></p>
+<p>MOV EDX.0x13FFD8</p><p>
+MOV DWORD PTR DS:[EDX],0x87654321</p><p></p>
 <img width="903" height="39" alt="image" src="https://github.com/user-attachments/assets/2db55f49-a6b4-4267-8c6d-59545f42f362">
 <img width="186" height="113" alt="image" src="https://github.com/user-attachments/assets/1bd89b8b-8ce6-409d-8bfa-8e1d622ee763">
-<p>获取内存编号:
-LEA EAX,DWORD PTR DS:[EDX]
-MOV EAX,DWORD PTR DS:[EDX]</p>
+<p>获取内存编号:</p><p>
+LEA EAX,DWORD PTR DS:[EDX]</p><p>
+MOV EAX,DWORD PTR DS:[EDX]</p><p></p>
 <img width="804" height="49" alt="image" src="https://github.com/user-attachments/assets/540b4647-3ce1-4612-a3d7-5eb217fa1ba7">
 <h3 id="寻址公式三reg立即数">寻址公式三:[reg+立即数]</h3>
-<p>读取内存的值:
-MOV ECX,0x13FFD0
-MOV EAX,DWORD PTR DS:[ECX+4]</p>
+<p>读取内存的值:</p><p>
+MOV ECX,0x13FFD0</p><p>
+MOV EAX,DWORD PTR DS:[ECX+4]</p><p></p>
 <img width="801" height="39" alt="image" src="https://github.com/user-attachments/assets/b69503af-a4a3-463e-8769-4a754df0e1df">
 <img width="215" height="190" alt="image" src="https://github.com/user-attachments/assets/fff78691-0476-4b39-a8ef-29c415e9b4a7">
-<p>向内存中写入数据:
-MOV EDX.0x13FFD8
-MOV DWORD PTR DS:[EDX+0xC],0x87654321
+<p>向内存中写入数据:</p><p>
+MOV EDX.0x13FFD8</p><p>
+MOV DWORD PTR DS:[EDX+0xC],0x87654321</p><p>
 <img width="1018" height="48" alt="image" src="https://github.com/user-attachments/assets/5a9b4883-9b60-480b-b2d0-5db8c7cb5f8b"></p>
 <img width="211" height="111" alt="image" src="https://github.com/user-attachments/assets/fef732a6-7598-4a5d-b9e3-6e14b90598a2">
-<p>获取内存编号:
-LEA EAX.DWORD PTR DS:[EDX+4]
-MOV EAX,DWORD PTR DS:[EDX+4]
+<p>获取内存编号:</p><p>
+LEA EAX.DWORD PTR DS:[EDX+4]</p><p>
+MOV EAX,DWORD PTR DS:[EDX+4]</p><p>
 <img width="692" height="48" alt="image" src="https://github.com/user-attachments/assets/6a93f0a9-e42f-45a2-8603-8c6720ed9b93"></p>
-<h3 id="寻址公式四regreg1248">寻址公式四:[reg+reg*{1,2.4,8}]</h3>
-<p>读取内存的值:
-MOV EAX.13FFC4
-MOVECX.2
-MOV EDX,DWORD PTR DS:[EAX+ECX*4]//只能是1248
+<h3 id="寻址公式四regreg1248">寻址公式四:[reg+reg*{1,2.4,8}]<p></p></h3>
+<p>读取内存的值:</p><p>
+MOV EAX.13FFC4</p><p>
+MOVECX.2</p><p>
+MOV EDX,DWORD PTR DS:[EAX+ECX*4]//只能是1248</p><p>
 <img width="868" height="57" alt="image" src="https://github.com/user-attachments/assets/066bd173-d0b2-47e1-b511-f2044b5886bd"></p>
 <img width="197" height="700" alt="image" src="https://github.com/user-attachments/assets/52dcf900-311d-4019-895a-9416fbe6993f">
-<p>向内存中写入数据:
-MOV EAX,13FFC4
-MOV ECX.2
-MOV DWORD PTR DS:[EAX+ECX*4],87654321
+<p>向内存中写入数据:</p><p>
+MOV EAX,13FFC4</p><p>
+MOV ECX.2</p><p>
+MOV DWORD PTR DS:[EAX+ECX*4],87654321</p><p>
 <img width="651" height="51" alt="image" src="https://github.com/user-attachments/assets/35e674fa-26a1-43da-8feb-020eba24612f"></p>
 <img width="238" height="89" alt="image" src="https://github.com/user-attachments/assets/ab445ae7-f577-4bda-b222-31e1107295f0">
-<p>获取内存编号:
-LEA EAX,DWORD PTR DS:[EAX+ECX*4]
+<p>获取内存编号:</p><p>
+LEA EAX,DWORD PTR DS:[EAX+ECX*4]</p><p>
 <img width="627" height="17" alt="image" src="https://github.com/user-attachments/assets/c7f69baa-1f81-484d-b2fc-4125244395e9"></p>
 <img width="185" height="221" alt="image" src="https://github.com/user-attachments/assets/d61b600b-8a1f-45d6-8ebf-bb3814bfcb89">
 <h3 id="寻址公式五regreg1248立即数">寻址公式五:[reg+reg*{1,2,4,8}+立即数]</h3>
-<p>读取内存的值:
-MOV EAX,13FFC4
-MOV ECX.2
-MOV EDX,DWORD PTR DS:[EAX+ECX*4+4]
+<p>读取内存的值:</p><p>
+MOV EAX,13FFC4</p><p>
+MOV ECX.2</p><p>
+MOV EDX,DWORD PTR DS:[EAX+ECX*4+4]</p><p>
 <img width="627" height="50" alt="image" src="https://github.com/user-attachments/assets/c142f04a-d927-486e-b462-6331fcf08fa3"></p>
 <img width="289" height="191" alt="image" src="https://github.com/user-attachments/assets/ddbb92c4-4cf6-4ba4-8b53-daae6c484dba">
-<p>向内存中写入数据:
-MOV EAX.13FFC4
-MOV ECX.2
-MOV DWORD PTR DS:[EAX+ECX*4+4],87654321
+<p>向内存中写入数据:</p><p>
+MOV EAX.13FFC4</p><p>
+MOV ECX.2</p><p>
+MOV DWORD PTR DS:[EAX+ECX*4+4],87654321</p><p>
 <img width="625" height="48" alt="image" src="https://github.com/user-attachments/assets/aacd8c82-3925-4043-9b51-8d226dd6ed1d"></p>
 <img width="219" height="123" alt="image" src="https://github.com/user-attachments/assets/b7cf4aa5-688f-49f7-9aaf-a2d0d6cbe299">
-<p>获取内存编号:
-LEA EAX,DWORD PTR DS:[EAX+ECX*4+2]
+<p>获取内存编号:</p><p>
+LEA EAX,DWORD PTR DS:[EAX+ECX*4+2]</p><p>
 <img width="559" height="21" alt="image" src="https://github.com/user-attachments/assets/b5255f56-22c6-45d6-bf5c-4876ce086244"></p>
 <img width="204" height="132" alt="image" src="https://github.com/user-attachments/assets/0ee20ad9-28d2-41eb-9b86-61e935106379">
 <img width="1920" height="1048" alt="image" src="https://github.com/user-attachments/assets/e2943627-e8f3-4931-b007-5f1acf274a89">
 <h1 id="堆栈">堆栈</h1>
-<p>1、堆栈的本质就是内存。
-2、栈是用来存储临时变量，函数传递的中间结果。
-3、操作系统维护的，对于“程序员”是透明的。
-注:课程里面会用一周的时间来熟悉堆栈。</p>
+<p>1、堆栈的本质就是内存。</p><p>
+2、栈是用来存储临时变量，函数传递的中间结果。</p><p>
+3、操作系统维护的，对于“程序员”是透明的。</p><p>
+注:课程里面会用一周的时间来熟悉堆栈。</p><p></p>
 <img width="567" height="225" alt="image" src="https://github.com/user-attachments/assets/a905edd1-df7c-404f-9842-792caf470e36">
-<p>push esp减小  pop esp增加
-作业：
-push eax
-等于
-mov dword ptr ss:[esp-4],eax
-sub esp,4</p>
+<p>push esp减小  pop esp增加</p><p>
+作业：</p><p>
+push eax</p><p>
+等于</p><p>
+mov dword ptr ss:[esp-4],eax</p><p>
+sub esp,4</p><p></p>
 <img width="529" height="155" alt="image" src="https://github.com/user-attachments/assets/3470fba0-27c4-468d-bca7-dcb0b4cee45d">
-<p>push esp
-等于
-mov dword ptr ss:[esp-4],esp
-lea esp,dword ptr ss:[esp-4] 
-或者
-mov dword ptr ss:[esp-4],esp
-sub esp
-pop esp
-等于
-lea esp,dword ptr ss:[esp+4]
-mov esp,dword ptr ss:[esp-4]
-与 push 对应的 pop 操作则相反：先降低栈顶指针，再取出数据。
-或者
-add esp,4
-mov esp,dword ptr ss:[esp-4]
+<p>push esp</p><p>
+等于</p><p>
+mov dword ptr ss:[esp-4],esp</p><p>
+lea esp,dword ptr ss:[esp-4]  </p><p>
+或者</p><p>
+mov dword ptr ss:[esp-4],esp</p><p>
+sub esp</p><p>
+pop esp</p><p>
+等于</p><p>
+lea esp,dword ptr ss:[esp+4]</p><p>
+mov esp,dword ptr ss:[esp-4]</p><p>
+与 push 对应的 pop 操作则相反：先降低栈顶指针，再取出数据。</p><p>
+或者</p><p>
+add esp,4</p><p>
+mov esp,dword ptr ss:[esp-4]</p><p>
 <img width="252" height="64" alt="image" src="https://github.com/user-attachments/assets/957e7557-4fa2-4f90-9a25-7e3e9bd64661"></p>
-<p>STOS（Store String）直译是 “存储字符串”，它的核心作用是：将累加器（AL/AX/EAX/RAX）中的值，存储到 ES:DI（或 ES:EDI/RDI）指向的内存地址中，并根据方向标志位（DF）自动调整 DI/EDI/RDI 寄存器的值，方便连续存储。
+<p>STOS（Store String）直译是 “存储字符串”，它的核心作用是：将累加器（AL/AX/EAX/RAX）中的值，存储到 ES:DI（或 ES:EDI/RDI）指向的内存地址中，并根据方向标志位（DF）自动调整 DI/EDI/RDI 寄存器的值，方便连续存储。</p><p>
 简单说，STOS 就是 “把寄存器里的数写到内存里”，专门用于批量填充内存（比如 memset 功能），是串操作指令中最常用的之一。
 <img width="866" height="386" alt="image" src="https://github.com/user-attachments/assets/f57b2d90-4122-45fa-b08a-bf76d5b34eb9"></p>
 <p>分别为Stosb  stosw stosd stosq </p><p>
