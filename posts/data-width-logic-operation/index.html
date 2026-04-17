@@ -115,94 +115,95 @@ Updated:
 <p>由于硬件的限制，数据都是有长度的，超过最多位的数据会被舍弃</p>
 <h3 id="4位">4位</h3>
 <p><img src="https://int3imgbed.tos-s3-cn-shanghai.volces.com/i/2026/02/b2eb5acaf799e0704f8c06d716df63a2.png" alt="image.png">
-4位宽度表示，假设计算机只能存储4位二进制数 0-F
-无符号数：0 1 2 3 4 5 6 7 8 9 A B C D E F
-有符号数
-公平起见从中间切开，0-7一组 8-f一组
-0-7是正数 8-F是负数 F是最大的负数
--1 -2 -3 -4 -5 -6 -7 -8
-F E D C B A 9 8
-因为F->0 走一个格就变成正数了例如 -1+1 = 0 即F在4位容器有符号数中是最大的负数</p>
+4位宽度表示，假设计算机只能存储4位二进制数 0-F</p><p>
+无符号数：0 1 2 3 4 5 6 7 8 9 A B C D E F</p><p>
+有符号数</p><p>
+公平起见从中间切开，0-7一组 8-f一组</p><p>
+0-7是正数 8-F是负数 F是最大的负数</p><p>
+-1 -2 -3 -4 -5 -6 -7 -8</p><p>
+F E D C B A 9 8</p><p>
+因为F->0 走一个格就变成正数了例如 -1+1 = 0 即F在4位容器有符号数中是最大的负数</p><p></p>
 <h3 id="8位">8位</h3>
 <p>8位宽度表示：假设计算机只能存储8位二进制
 <img src="https://int3imgbed.tos-s3-cn-shanghai.volces.com/i/2026/02/deca4af948d35c0df2707a92bfe188bc.png" alt="image.png">
-八位二进制数可以用两个十六进制表示
-无符号数 00000000<del>11111111（00</del>ff）十进制的255
-有符号数
-正数：
-0 1 2 3 4 5 6 7…7F
-负数：
--1 -2 -3 -4 -5 -6 -7 -8…-128
-FF FE FC FD FC FB FA F9 F8 F7…80</p>
+八位二进制数可以用两个十六进制表示</p><p>
+无符号数 00000000<del>11111111（00</del>ff）十进制的255</p><p>
+有符号数</p><p>
+正数：</p><p>
+0 1 2 3 4 5 6 7…7F</p><p>
+负数：</p><p>
+-1 -2 -3 -4 -5 -6 -7 -8…-128</p><p>
+FF FE FC FD FC FB FA F9 F8 F7…80</p><p></p>
 <h3 id="16位">16位</h3>
 <p>16位宽度表示 假设计算机只能存储16位二进制数
 <img src="https://int3imgbed.tos-s3-cn-shanghai.volces.com/i/2026/02/d81516874452c4a3ae6c15f9e172079c.png" alt="image.png">
-无符号数
-1 2 3 4 5 6 … FFFF
-有符号数
-正数：
-1 2 3 4 5 6 7 8 … 7FFF
-负数：
--1 -2 -3 -4 -5 -6 -7 -8 …
-FFFF FFFE FFFD FFFC FFFB FFFA FFF9 FFF8…8000</p>
+无符号数</p><p>
+1 2 3 4 5 6 … FFFF</p><p>
+有符号数</p><p>
+正数：</p><p>
+1 2 3 4 5 6 7 8 … 7FFF</p><p>
+负数：</p><p>
+-1 -2 -3 -4 -5 -6 -7 -8 …</p><p>
+FFFF FFFE FFFD FFFC FFFB FFFA FFF9 FFF8…8000</p><p></p>
 <h3 id="32位">32位</h3>
-<p>32位宽度表示 假设计算机只能存储32位2进制数
+<p>32位宽度表示 假设计算机只能存储32位2进制数</p><p>
 <img src="https://int3imgbed.tos-s3-cn-shanghai.volces.com/i/2026/02/1ea80b8286bd9f824f1c4674fad23406.png" alt="image.png">
-无符号数：1 2 3 4 5 6 7 8 9 … FFFFFFFF
-有符号数
--1 -2 -3 -4 -5 -6 -7 -8 -9 …
-FFFFFFFF FFFFFFFE FFFFFFFD… 80000000</p>
+无符号数：1 2 3 4 5 6 7 8 9 … FFFFFFFF</p><p>
+有符号数</p><p>
+-1 -2 -3 -4 -5 -6 -7 -8 -9 …</p><p>
+FFFFFFFF FFFFFFFE FFFFFFFD… 80000000</p><p></p>
 <h2 id="容器单位">容器单位</h2>
-<p>计算机的每个容器都是有宽度的 超出界限 出现进位会舍掉
-重要的计量单位
-BTYE 字节 8BIT
-WORD 字 16BIT 2字节
-DWORD 双字 32BIT 4字节</p>
+<p>计算机的每个容器都是有宽度的 超出界限 出现进位会舍掉</p><p>
+重要的计量单位</p><p>
+BTYE 字节 8BIT</p><p>
+WORD 字 16BIT 2字节</p><p>
+DWORD 双字 32BIT 4字节</p><p></p>
 <h1 id="逻辑运算">逻辑运算</h1>
-<p>逻辑运算或，一真则真
-逻辑运算与，都真则真
-逻辑运算异或，不一样则为真
-非 相反</p>
+<p>逻辑运算或，一真则真</p><p>
+逻辑运算与，都真则真</p><p>
+逻辑运算异或，不一样则为真</p><p>
+非 相反</p><p></p>
 <h2 id="逻辑运算的具体应用">逻辑运算的具体应用</h2>
 <h3 id="1cpu是如何计算23">1.CPU是如何计算2+3=？</h3>
-<p>2->0010 X
-3->0011 Y
-异或0010和0011->0001 R
-与0010和0011->0010（判断是否为0）不为0则左移一位 为0说明R是最终结果
-所以现在X：0001 Y：0100
-继续异或0100和0001 ->0101
-and 0100与0001 发现是0 所以0101就是我们的最终结果 十进制是5</p>
+<p>2->0010 X</p><p>
+3->0011 Y</p><p>
+异或0010和0011->0001 R</p><p>
+与0010和0011->0010（判断是否为0）不为0则左移一位 为0说明R是最终结果</p><p>
+所以现在X：0001 Y：0100</p><p>
+继续异或0100和0001 ->0101</p><p>
+and 0100与0001 发现是0 所以0101就是我们的最终结果 十进制是5</p><p></p>
 <h3 id="2如果想获取某个值的第n位的值是多少">2.如果想获取某个值的第N位的值是多少</h3>
-<p>将想获取的值与运算00001000 即可知道第四位是否位1</p>
+<p>将想获取的值与运算00001000 即可知道第四位是否位1</p><p></p>
 <h3 id="3最简单的加密算法">3.最简单的加密算法</h3>
-<p>要加密的数据2026
-密钥 10
-00100000
-00010000
-xor =00110000->30 //加密</p>
-<p>xor 00100000 //解密
-解密结果 =00010000->20</p>
+<p>要加密的数据2026</p><p>
+密钥 10</p><p>
+00100000</p><p>
+00010000</p><p>
+xor =00110000->30 //加密</p><p></p>
+<p>xor 00100000 //解密</p><p>
+解密结果 =00010000->20</p><p></p>
 <h2 id="homework">homework</h2>
 <h3 id="1八进制数2-5在计算器中的结果是37-777-777-775-为什么">1.八进制数2-5在计算器中的结果是37 777 777 775 为什么？</h3>
-<p>进制只是结果的转换，十进制、十六进制的2-5和八进制的2-5结果是一样的，-3在十六进制的结果是FFFFFFFD</p>
+<p><code> 进制只是结果的转换，十进制、十六进制的2-5和八进制的2-5结果是一样的，-3在十六进制的结果是FFFFFFFD</code></p>
 <h3 id="2使用异或对-87ad6进行加密后再进行解密加解密密钥5">2.使用异或对 87AD6进行加密后再进行解密，加解密密钥:5</h3>
-<p>87AD6
-10000111101011010110
-00000000000000000101<br>
-xor = 10000111101011010011
-加密后的十六进制 87ED3</p>
-<p>10000111101011010011
-00000000000000000101
-XOR = 1000 0111 1010 1101 0110
-87AD6</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>87AD6</span></span>
+<span class="line"><span>10000111101011010110</span></span>
+<span class="line"><span>00000000000000000101</span></span>
+<span class="line"><span>xor = 10000111101011010011</span></span>
+<span class="line"><span>加密后的十六进制 87ED3</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>10000111101011010011</span></span>
+<span class="line"><span>00000000000000000101</span></span>
+<span class="line"><span>XOR = 1000 0111 1010 1101 0110</span></span>
+<span class="line"><span>87AD6</span></span></code></pre>
 <h3 id="3只用逻辑运算计算2-3涉及内容逻辑运算-移位-数据宽度">3.只用逻辑运算计算2-3=？(涉及内容：逻辑运算 移位 数据宽度)</h3>
-<p>X = 2->00000010
-Y = -3->FD ->11111101
-0010
-1101
-xor = 1111 R
-X&#x26;Y = 0000
-故R是最终结果1111 即-1</p> </article> <hr class="my-8 border-dashed"> <a href="https://github.com/Firmxiu/astro-paper/edit/main/src/data/blog/滴水逆向三期-数据宽度_逻辑运算.md" target="_blank" rel="noopener noreferrer" class="flex justify-baseline gap-1.5 opacity-80 hover:text-accent sm:hidden"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg><span>Edit page</span></a> <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/逆向笔记/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 逆向笔记 </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>X = 2->00000010</span></span>
+<span class="line"><span>Y = -3->FD ->11111101</span></span>
+<span class="line"><span>0010</span></span>
+<span class="line"><span>1101</span></span>
+<span class="line"><span>xor = 1111 R</span></span>
+<span class="line"><span>X&#x26;Y = 0000</span></span>
+<span class="line"><span>故R是最终结果1111 即-1</span></span></code></pre> </article> <hr class="my-8 border-dashed"> <a href="https://github.com/Firmxiu/astro-paper/edit/main/src/data/blog/滴水逆向三期-数据宽度_逻辑运算.md" target="_blank" rel="noopener noreferrer" class="flex justify-baseline gap-1.5 opacity-80 hover:text-accent sm:hidden"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg><span>Edit page</span></a> <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/逆向笔记/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 逆向笔记 </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
 Back To Top
 </span> </button> </div> <script data-astro-rerun>
   /** Scrolls the document to the top when
